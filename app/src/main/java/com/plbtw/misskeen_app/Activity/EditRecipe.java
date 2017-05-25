@@ -15,10 +15,8 @@ import android.widget.Spinner;
 
 import com.plbtw.misskeen_app.Client;
 import com.plbtw.misskeen_app.Model.Recipe;
-import com.plbtw.misskeen_app.Model.User;
 import com.plbtw.misskeen_app.R;
 import com.plbtw.misskeen_app.Rest;
-import com.scalified.fab.ActionButton;
 
 import java.util.ArrayList;
 
@@ -59,9 +57,9 @@ public class EditRecipe extends AppCompatActivity {
         bahanR = (Spinner) findViewById(R.id.etIngredient);
         caraR = (EditText) findViewById(R.id.etCooking);
         porsiR = (EditText) findViewById(R.id.etPortion);
-        jumlahB = (EditText) findViewById(R.id.etAmount);
-        satuanB = (EditText) findViewById(R.id.etSatuan);
-        deskripsiB = (EditText) findViewById(R.id.etDeskripsiB);
+        //jumlahB = (EditText) findViewById(R.id.etAmount);
+        //satuanB = (EditText) findViewById(R.id.etSatuan);
+        //deskripsiB = (EditText) findViewById(R.id.etDeskripsiB);
 
 //        btnBahan = (Button) findViewById(R.id.btnaddIngredient);
         btnSimpan = (Button) findViewById(R.id.btnSubmit);

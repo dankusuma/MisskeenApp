@@ -2,6 +2,8 @@ package com.plbtw.misskeen_app.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by Paulina on 5/22/2017.
  */
@@ -19,9 +21,9 @@ public class Recipe {
     @SerializedName("image")
     private String image;
     @SerializedName("ingredients")
-    private IngredientObject ingredients;
+    private List<IngredientObject> ingredients;
 
-    public Recipe(String name, String description, String procedure, String portion, IngredientObject ingredients, String Image)
+    public Recipe(String name, String description, String procedure, String portion, List<IngredientObject> ingredients, String Image)
     {
         this.name = name;
         this.description = description;
@@ -57,10 +59,6 @@ public class Recipe {
 
     public String getProcedure() {
         return procedure;
-    }
-
-    public IngredientObject getIngredients() {
-        return ingredients;
     }
 
 

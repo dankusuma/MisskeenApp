@@ -21,9 +21,17 @@ public class IngredientObject
     public IngredientObject()
     {
     }
-    public IngredientObject(String name, String amount, String unit, String description)
+    public IngredientObject(int id,String name, String amount, String unit, String description)
     {
+        this.id = id;
         this.nama = name;
+        this.amount = amount;
+        this.unit = unit;
+        this.description = description;
+    }
+    public IngredientObject(int id, String amount, String unit, String description)
+    {
+        this.id = id;
         this.amount = amount;
         this.unit = unit;
         this.description = description;
