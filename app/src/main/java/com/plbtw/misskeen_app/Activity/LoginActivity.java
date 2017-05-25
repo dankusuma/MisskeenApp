@@ -17,11 +17,17 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.plbtw.misskeen_app.Client;
+import com.plbtw.misskeen_app.Helper.PrefHelper;
 import com.plbtw.misskeen_app.Model.User;
 import com.plbtw.misskeen_app.Model.UserObject;
 import com.plbtw.misskeen_app.R;
+import com.plbtw.misskeen_app.RecipeDetails;
 import com.plbtw.misskeen_app.Rest;
+
+import java.lang.reflect.Type;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -90,17 +96,15 @@ public class LoginActivity extends AppCompatActivity {
                 public void onResponse(Call<User> call, retrofit2.Response<User> response) {
                     if(response.body().getStatus().equals("true"))
                     {
-                        UserObject userObject = new UserObject();
-                        userObject=response.body().getUser();
-                        saveObjectToSharedPreference(getApplicationContext(), "mPreference", "mObjectKey", userObject);
+                        UserObject u = new UserObject();
+                        u=response.body().getUser();
                         SharedPreferences ListRecipeSharedPrefs = PreferenceManager
                                 .getDefaultSharedPreferences(LoginActivity.this);
                         SharedPreferences.Editor prefsEditor =  ListRecipeSharedPrefs.edit();
                         Gson gson = new Gson();
-                        String json = gson.toJson(userObject);
+                        String json = gson.toJson(u);
                         prefsEditor.putString("userdata", json);
                         prefsEditor.commit();
-
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(i);
                     }
@@ -139,14 +143,6 @@ public class LoginActivity extends AppCompatActivity {
             });
 
         }
-    }
-    public static void saveObjectToSharedPreference(Context context, String preferenceFileName, String serializedObjectKey, Object object) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(preferenceFileName, 0);
-        SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
-        final Gson gson = new Gson();
-        String serializedObject = gson.toJson(object);
-        sharedPreferencesEditor.putString(serializedObjectKey, serializedObject);
-        sharedPreferencesEditor.apply();
     }
     public boolean isOnline()
     {
