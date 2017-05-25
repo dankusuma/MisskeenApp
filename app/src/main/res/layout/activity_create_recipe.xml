@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/etNama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nama Resep"
+                android:inputType="textPersonName"
+                android:layout_alignStart="@+id/textView" />
+
+            <EditText
+                android:id="@+id/etDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/etNama"
+                android:layout_below="@+id/etNama"
+                android:layout_marginTop="14dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:hint="Deskripsi" />
+            <Spinner
+                android:id="@+id/etIngredient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                android:popupBackground="@color/abc_input_method_navigation_guard"
+                android:layout_below="@+id/etDescription"
+                android:layout_alignStart="@+id/etDescription" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/laySpinner"
+                android:layout_below="@+id/etIngredient"
+                android:layout_alignStart="@+id/etIngredient">
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/etCooking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:ems="10"
+                android:hint="Cara Memasak"
+                android:layout_below="@+id/laySpinner"
+                android:layout_alignStart="@+id/laySpinner" />
+
+            <Button
+                android:id="@+id/btnSubmit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="57dp"
+                android:layout_toEndOf="@+id/etCooking"
+                android:text="Simpan" />
+
+            <EditText
+                android:id="@+id/etPortion"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Jumlah porsi"
+                android:inputType="number"
+                android:layout_above="@+id/etDescription"
+                android:layout_toEndOf="@+id/etSatuan"
+                android:layout_marginLeft="75dp" />
+
+            <ImageView
+                android:id="@+id/ivAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/btnSubmit"
+                android:layout_alignStart="@+id/etCooking"
+                android:layout_alignTop="@+id/btnSubmit"
+                app:srcCompat="@android:drawable/ic_menu_add"
+                android:visibility="gone" />
+
+            <!--<Button-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="+"-->
+                <!--android:id="@+id/btnaddIngredient"-->
+                <!--android:layout_alignBottom="@+id/laySpinner"-->
+                <!--android:layout_toEndOf="@+id/etNama"-->
+                <!--android:nestedScrollingEnabled="false"-->
+                <!--android:onClick="buttonBahan" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:textAppearance="?android:attr/textAppearanceSmall"-->
+                <!--android:text="Add Image"-->
+                <!--android:id="@+id/textView"-->
+                <!--android:layout_below="@+id/ivAdd"-->
+                <!--android:layout_toStartOf="@+id/textView10" />-->
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etAmount"
+                android:layout_below="@+id/etIngredient"
+                android:layout_alignStart="@+id/etIngredient"
+                android:hint="Jumlah" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/etDeskripsiB"
+                android:hint="Deskripsi Bahan"
+                android:layout_below="@+id/etIngredient"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="90dp"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/etSatuan"
+                android:layout_below="@+id/etIngredient"
+                android:layout_toEndOf="@+id/etAmount"
+                android:hint="Satuan"
+                android:layout_marginLeft="20dp"
+                android:paddingRight="30dp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|top"></FrameLayout>
+
+</FrameLayout>

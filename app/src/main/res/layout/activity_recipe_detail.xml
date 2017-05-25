@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/recipeimagedetail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:alpha="0.8" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="#ACACAC"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/recipedetailname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingTop="20dp"
+                android:text="Name" />
+
+            <TextView
+                android:id="@+id/recipedetaildescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingTop="20dp"
+                android:text="Description" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingTop="20dp"
+                android:text="Steps : " />
+            <TextView
+                android:id="@+id/recipesteps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingTop="20dp"
+                android:text="recipesteps" />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingTop="20dp"
+                android:text="Ingredients : " />
+            <TextView
+                android:id="@+id/recipeingredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingTop="20dp"
+                android:text="Ingredients : " />
+
+            <com.scalified.fab.ActionButton
+                android:id="@+id/edit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/fab_margin"
+                fab:type="DEFAULT"
+                fab:button_color="@color/fab_material_red_500"
+                fab:button_colorPressed="@color/fab_material_red_900"
+                fab:image="@drawable/edit"
+                fab:image_size="24dp"
+                fab:shadow_color="#757575"
+                fab:shadow_radius="1.0dp"
+                fab:shadow_xOffset="0.5dp"
+                fab:shadow_yOffset="1.0dp"
+                fab:stroke_color="@color/fab_material_amber_500"
+                fab:stroke_width="1.0dp"
+                fab:button_colorRipple="@color/fab_material_black"
+                fab:rippleEffect_enabled="false"
+                fab:shadowResponsiveEffect_enabled="true"
+                fab:show_animation="@anim/fab_roll_from_down"
+                fab:hide_animation="@anim/fab_roll_to_down"
+                android:layout_gravity="bottom|right"
+                android:layout_marginTop="50dp" />
+            <com.scalified.fab.ActionButton
+                android:id="@+id/delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/fab_margin"
+                fab:type="DEFAULT"
+                fab:button_color="@color/fab_material_red_500"
+                fab:button_colorPressed="@color/fab_material_red_900"
+                fab:image="@drawable/deletebutton"
+                fab:image_size="24dp"
+                fab:shadow_color="#757575"
+                fab:shadow_radius="1.0dp"
+                fab:shadow_xOffset="0.5dp"
+                fab:shadow_yOffset="1.0dp"
+                fab:stroke_color="@color/fab_material_amber_500"
+                fab:stroke_width="1.0dp"
+                fab:button_colorRipple="@color/fab_material_black"
+                fab:rippleEffect_enabled="false"
+                fab:shadowResponsiveEffect_enabled="true"
+                fab:show_animation="@anim/fab_roll_from_down"
+                fab:hide_animation="@anim/fab_roll_to_down"
+                android:layout_gravity="bottom|left"
+                android:layout_marginTop="-32dp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+    <TextView
+        android:id="@+id/reciperating"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/recipethumbnail"
+        android:textColor="@color/genre"
+        android:textSize="@dimen/genre" />
+
+
+</LinearLayout>
