@@ -1,7 +1,9 @@
 package com.plbtw.misskeen_app.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.NavigationView;
@@ -245,10 +247,18 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+
+            SharedPreferences ListRecipeSharedPrefs = PreferenceManager
+                    .getDefaultSharedPreferences(MainActivity.this);
+            SharedPreferences.Editor prefsEditor =  ListRecipeSharedPrefs.edit();
+            prefsEditor.clear();
+            prefsEditor.commit();
+            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+            startActivity(intent);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

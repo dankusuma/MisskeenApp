@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/MissKeen-App.iml" filepath="$PROJECT_DIR$/MissKeen-App.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MisskeenApp.iml" filepath="$PROJECT_DIR$/MisskeenApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
