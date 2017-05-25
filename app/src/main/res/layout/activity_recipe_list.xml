@@ -28,14 +28,7 @@
             android:listSelector="@drawable/list_row_selector"
             android:padding="8dp"/>
 
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/rLay"  -->
-            <!--android:gravity="bottom|right"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="32dp"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--android:layout_alignParentRight="true"-->
-            <!--&gt;-->
+
 
             <com.scalified.fab.ActionButton
                 android:id="@+id/action_button"
@@ -62,6 +55,7 @@
                 fab:show_animation="@anim/fab_roll_from_down"
                 fab:hide_animation="@anim/fab_roll_to_down"
                 />
+
         <!--</RelativeLayout>-->
     </RelativeLayout>
 

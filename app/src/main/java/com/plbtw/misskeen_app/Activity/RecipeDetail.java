@@ -2,6 +2,7 @@ package com.plbtw.misskeen_app.Activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +43,7 @@ public class RecipeDetail extends AppCompatActivity {
     private TextView txtrecipename,txtrecipedescription,txtrecipesteps,txtrecipeingredients;
     Bundle extras;
     String id;
-    private ActionButton fab, fabdel;
+    private com.github.clans.fab.FloatingActionButton fab, fabdel;
 
     private String apikey = "nN2BVe0vO6t42PO3xCqywJNF2jWZ59";
     @Override
@@ -59,8 +60,8 @@ public class RecipeDetail extends AppCompatActivity {
         getDataResep();
 
 
-        fab = (ActionButton) findViewById(R.id.edit_button);
-        fabdel = (ActionButton) findViewById(R.id.delete_button);
+        fab = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.resep_edit);
+        fabdel = (com.github.clans.fab.FloatingActionButton) findViewById(R.id.resep_delete);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +75,7 @@ public class RecipeDetail extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         fabdel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

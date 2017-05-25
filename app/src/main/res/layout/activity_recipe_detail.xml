@@ -122,61 +122,49 @@
                 >
                 </TextView>
 
-            <com.scalified.fab.ActionButton
-                android:id="@+id/edit_button"
+
+
+
+
+            <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/menu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/fab_margin"
-                android:layout_marginBottom="@dimen/fab_margin"
-                fab:type="DEFAULT"
-                fab:button_color="@color/fab_material_red_500"
-                fab:button_colorPressed="@color/fab_material_red_900"
-                fab:image="@drawable/edit"
-                fab:image_size="24dp"
-                fab:shadow_color="#757575"
-                fab:shadow_radius="1.0dp"
-                fab:shadow_xOffset="0.5dp"
-                fab:shadow_yOffset="1.0dp"
-                fab:stroke_color="@color/fab_material_amber_500"
-                fab:stroke_width="1.0dp"
-                fab:button_colorRipple="@color/fab_material_black"
-                fab:rippleEffect_enabled="false"
-                fab:shadowResponsiveEffect_enabled="true"
-                fab:show_animation="@anim/fab_roll_from_down"
-                fab:hide_animation="@anim/fab_roll_to_down"
-                android:layout_gravity="bottom|right"
-                android:layout_marginTop="50dp" />
-            <com.scalified.fab.ActionButton
-                android:id="@+id/delete_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/fab_margin"
-                android:layout_marginBottom="@dimen/fab_margin"
-                fab:type="DEFAULT"
-                fab:button_color="@color/fab_material_red_500"
-                fab:button_colorPressed="@color/fab_material_red_900"
-                fab:image="@drawable/deletebutton"
-                fab:image_size="24dp"
-                fab:shadow_color="#757575"
-                fab:shadow_radius="1.0dp"
-                fab:shadow_xOffset="0.5dp"
-                fab:shadow_yOffset="1.0dp"
-                fab:stroke_color="@color/fab_material_amber_500"
-                fab:stroke_width="1.0dp"
-                fab:button_colorRipple="@color/fab_material_black"
-                fab:rippleEffect_enabled="false"
-                fab:shadowResponsiveEffect_enabled="true"
-                fab:show_animation="@anim/fab_roll_from_down"
-                fab:hide_animation="@anim/fab_roll_to_down"
-                android:layout_gravity="bottom|left"
-                android:layout_marginTop="-32dp" />
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                fab:menu_fab_size="normal"
+                fab:menu_showShadow="true"
+                fab:menu_shadowColor="#66000000"
+                fab:menu_shadowRadius="4dp"
+                fab:menu_shadowXOffset="1dp"
+                fab:menu_shadowYOffset="3dp"
+                fab:menu_colorNormal="#DA4336"
+                fab:menu_colorPressed="#E75043"
+                fab:menu_colorRipple="#99FFFFFF"
+                fab:menu_animationDelayPerItem="50"
+                fab:menu_icon="@drawable/fab_add"
+                fab:menu_buttonSpacing="0dp"
+                >
 
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/resep_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_mode_edit_black_18dp"
+                    fab:fab_size="normal"
+                 />
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/resep_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_delete_black_18dp"
+                    fab:fab_size="normal"
+                    />
 
-
+            </com.github.clans.fab.FloatingActionMenu>
 
 
 
