@@ -111,6 +111,8 @@ public class RecipeListFragment extends ListFragment {
                             recipeDetail.setRecipedescription(obj.getString("description"));
                             recipeDetail.setRecipename(obj.getString("name"));
                             recipeDetail.setReciperating(obj.getString("rating"));
+                            recipeDetail.setTotalCalory(obj.getString("totalCalory"));
+                            recipeDetail.setTotalPrice(obj.getString("totalPrice"));
                             recipeDetailList.add(recipeDetail);
 
                         } catch (JSONException e) {

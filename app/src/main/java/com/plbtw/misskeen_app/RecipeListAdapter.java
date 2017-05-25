@@ -59,14 +59,19 @@ public class RecipeListAdapter extends BaseAdapter {
         TextView recipename = (TextView) convertView.findViewById(R.id.recipename);
         TextView recipedescription = (TextView) convertView.findViewById(R.id.recipedescription);
         TextView reciperating = (TextView) convertView.findViewById(R.id.reciperating);
+        TextView recipeprice = (TextView) convertView.findViewById(R.id.recipePrice);
+        TextView recipecalory = (TextView) convertView.findViewById(R.id.recipeCalory);
+
 
         RecipeDetails m = recipeDetailItems.get(position);
 
         thumbNail.setImageUrl(m.getRecipethumbnail(), imageLoader);
         recipeid.setText(m.getRecipeid());
         recipename.setText(m.getRecipename());
-        recipedescription.setText(m.getRecipedescription());
+        recipedescription.setText("Deskripsi :" +m.getRecipedescription());
         reciperating.setText(m.getReciperating());
+        recipeprice.setText("harga  : Rp"+m.getTotalPrice());
+        recipecalory.setText("Kalori :"+m.getTotalCalory());
         return convertView;
     }
 

@@ -12,6 +12,8 @@ public class RecipeDetails implements Parcelable {
     private String recipedescription;
     private String reciperating;
     private String recipethumbnail;
+    private String totalPrice;
+    private String totalCalory;
 
     public RecipeDetails() {
     }
@@ -88,5 +90,23 @@ public class RecipeDetails implements Parcelable {
         parcel.writeString(recipedescription);
         parcel.writeString(reciperating);
         parcel.writeString(recipethumbnail);
+        parcel.writeString(totalCalory);
+        parcel.writeString(totalPrice);
+    }
+
+    public String getTotalCalory() {
+        return totalCalory;
+    }
+
+    public void setTotalCalory(String totalCalory) {
+        this.totalCalory = totalCalory;
+    }
+
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

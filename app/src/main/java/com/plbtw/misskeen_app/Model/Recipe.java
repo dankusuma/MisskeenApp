@@ -18,6 +18,10 @@ public class Recipe {
     private String portion;
     @SerializedName("image")
     private String image;
+    @SerializedName("totalCalory")
+    private String totalCalory;
+    @SerializedName("totalPrice")
+    private String totalPrice;
     @SerializedName("ingredients")
     private IngredientObject ingredients;
 
@@ -64,4 +68,11 @@ public class Recipe {
     }
 
 
+    public String getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 }
