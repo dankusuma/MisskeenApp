@@ -8,6 +8,8 @@ import com.google.gson.annotations.SerializedName;
 public class IngredientObject
 {
     @SerializedName("ingredient_id")
+    private int id_ingredient;
+    @SerializedName("id")
     private int id;
     @SerializedName("name")
     private String nama;
@@ -23,7 +25,7 @@ public class IngredientObject
     }
     public IngredientObject(int id,String name)
     {
-        this.id=id;
+        this.id_ingredient=id;
         this.nama=name;
     }
     public IngredientObject(int id,String name, String amount, String unit, String description)
@@ -36,7 +38,7 @@ public class IngredientObject
     }
     public IngredientObject(int id, String amount, String unit, String description)
     {
-        this.id = id;
+        this.id_ingredient = id;
         this.amount = amount;
         this.unit = unit;
         this.description = description;

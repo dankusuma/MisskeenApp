@@ -122,8 +122,6 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         Rest rest = Client.getClient().create(Rest.class);
         Ingredients ig = new Ingredients();
         final List<RecipeDetails> recipeDetailList = new ArrayList<>();
-
-
         ig.setIngredientObject(temp);
 
         Call<List<Recipe>> call = rest.searchRecipe(ig, Varconstant.APIKEY);
@@ -149,7 +147,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
                 String json = gson.toJson(recipeDetailList);
                 prefsEditor.putString("recipelist", json);
                 prefsEditor.commit();
-                Intent intent = new Intent(getContext(),ActivityListSearch.class);
+               Intent intent = new Intent(getContext(),ActivityListSearch.class);
                 startActivity(intent);
 
 
