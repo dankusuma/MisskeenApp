@@ -3,7 +3,10 @@ package com.plbtw.misskeen_app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,6 +26,7 @@ import com.plbtw.misskeen_app.R;
 import com.plbtw.misskeen_app.Rest;
 import com.plbtw.misskeen_app.Varconstant;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +60,11 @@ public class CreateRecipe extends AppCompatActivity {
     ArrayList<String> tempjml = new ArrayList<>();
     ArrayList<String> tempsat = new ArrayList<>();
     ArrayList<String> tempdes = new ArrayList<>();
+    ImageView imageview;
+
+
+    private Bitmap bitmap;
+    private int PICK_IMAGE_REQUEST = 1;
     private ArrayAdapter<String> adapter;
 
     private String apikey = "nN2BVe0vO6t42PO3xCqywJNF2jWZ59";
@@ -69,7 +78,7 @@ public class CreateRecipe extends AppCompatActivity {
         bahanR = (Spinner) findViewById(R.id.etIngredient);
         caraR = (EditText) findViewById(R.id.etCooking);
         porsiR = (EditText) findViewById(R.id.etPortion);
-
+        imageview=(ImageView) findViewById(R.id.imageprofil);
         satuanB = (EditText) findViewById(R.id.etSatuan);
 
         dynamicLayout = (LinearLayout) findViewById(R.id.dynamicLayout);
@@ -109,7 +118,45 @@ public class CreateRecipe extends AppCompatActivity {
             }
         });
         getData();
+
+        imageview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFileChooser();
+            }
+        });
     }
+
+    private void showFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri filePath = data.getData();
+            try {
+                //Getting the Bitmap from Gallery
+                bitmap = MediaStore.Images.Media.getBitmap(CreateRecipe.this.getContentResolver(), filePath);
+                //Setting the Bitmap to ImageView
+                imageview.setImageBitmap(bitmap);
+                //uploadImage();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+
+
+
+
 
 
     public void getData() {
@@ -133,6 +180,10 @@ public class CreateRecipe extends AppCompatActivity {
                 adapter = new ArrayAdapter<String>(CreateRecipe.this, android.R.layout.simple_spinner_dropdown_item, ingredientList);
 
             }
+
+
+
+
 
             @Override
             public void onFailure(Call<List<IngredientObject>> call, Throwable t) {
