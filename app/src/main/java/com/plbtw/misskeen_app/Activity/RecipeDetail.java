@@ -40,7 +40,7 @@ import retrofit2.Callback;
 public class RecipeDetail extends AppCompatActivity {
     private static final String url = "http://ditoraharjo.co/misskeen/api/v1/recipe/".toString().trim();
     private ImageView imageView;
-    private TextView txtrecipename,txtrecipedescription,txtrecipesteps,txtrecipeingredients;
+    private TextView txtrecipename,txtrecipedescription,txtrecipesteps,txtrecipeingredients,txtrecipescalories,txtrecipesprice,txtrecipesportion;
     Bundle extras;
     String id;
     private com.github.clans.fab.FloatingActionButton fab, fabdel;
@@ -55,6 +55,10 @@ public class RecipeDetail extends AppCompatActivity {
         txtrecipedescription=(TextView)findViewById(R.id.recipedetaildescription);
         txtrecipesteps=(TextView)findViewById(R.id.recipesteps);
         txtrecipeingredients=(TextView)findViewById(R.id.recipeingredients);
+        txtrecipesprice=(TextView)findViewById(R.id.recipedetailprice);
+        txtrecipescalories=(TextView)findViewById(R.id.recipedetailcalories);
+        txtrecipesportion=(TextView)findViewById(R.id.recipedetailportion);
+
         extras = getIntent().getExtras();
         id=extras.getString("recipeid");
         getDataResep();
@@ -138,13 +142,19 @@ public class RecipeDetail extends AppCompatActivity {
                         recipeDetail.setRecipedescription(obj.getString("description"));
                         recipeDetail.setRecipename(obj.getString("name"));
                         recipeDetail.setReciperating(obj.getString("rating"));
+                        recipeDetail.setTotalCalory(obj.getString("totalCalory"));
+                        recipeDetail.setTotalPrice(obj.getString("totalPrice"));
+                        recipeDetail.setPortion(obj.getString("portion"));
                         JSONArray ingredients = obj.getJSONArray("ingredients");
                         Picasso
                                 .with(RecipeDetail.this)
                                 .load(recipeDetail.getRecipethumbnail()).memoryPolicy(MemoryPolicy.NO_CACHE) .networkPolicy(NetworkPolicy.NO_CACHE)
                                 .into(imageView);
-                        txtrecipename.setText(recipeDetail.getRecipename());
-                        txtrecipedescription.setText(recipeDetail.getRecipedescription());
+                        txtrecipename.setText("Name : "+recipeDetail.getRecipename());
+                        txtrecipesportion.setText("Portion : "+recipeDetail.getPortion());
+                        txtrecipescalories.setText("Calories : "+recipeDetail.getTotalCalory());
+                        txtrecipesprice.setText("Price : "+recipeDetail.getTotalPrice());
+                        txtrecipedescription.setText("Description : "+recipeDetail.getRecipedescription());
                         txtrecipesteps.setText(obj.getString("procedure"));
                         String bahan;
                         for (int i=0;i<ingredients.length();i++)
