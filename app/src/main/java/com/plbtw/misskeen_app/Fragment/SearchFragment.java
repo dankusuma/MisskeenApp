@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.plbtw.misskeen_app.Activity.ActivityListSearch;
+import com.plbtw.misskeen_app.Activity.CreateRecipe;
 import com.plbtw.misskeen_app.Client;
 import com.plbtw.misskeen_app.Model.IngredientObject;
 import com.plbtw.misskeen_app.Model.Ingredients;
@@ -24,6 +25,7 @@ import com.plbtw.misskeen_app.R;
 import com.plbtw.misskeen_app.RecipeDetails;
 import com.plbtw.misskeen_app.Rest;
 import com.plbtw.misskeen_app.Varconstant;
+import com.scalified.fab.ActionButton;
 
 import org.json.JSONArray;
 
@@ -45,6 +47,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     private List<Spinner> mSpiner = new ArrayList<>();
     private List<IngredientObject> listid = new ArrayList<>();
     ArrayList<Integer> temp = new ArrayList<>();
+    private ActionButton fab;
     public SearchFragment()
     {}
     public List<IngredientObject> mObject=new ArrayList<>();
@@ -58,6 +61,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         btnPlus = (Button) getView().findViewById(R.id.btnaddIngredient);
         btnSearch=(Button)getView().findViewById(R.id.btnsearch);
         dynamicLayout = (LinearLayout) getView().findViewById(R.id.dynamicLayout);
+        fab = (ActionButton) getView().findViewById(R.id.action_button);
         getData();
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +85,13 @@ public class SearchFragment extends android.support.v4.app.Fragment {
                     temp.add(id);
                 }
                 getDataResep();
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(), CreateRecipe.class);
+                startActivity(i);
             }
         });
     }
