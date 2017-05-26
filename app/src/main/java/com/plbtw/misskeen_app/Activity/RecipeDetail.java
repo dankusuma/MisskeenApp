@@ -71,6 +71,7 @@ public class RecipeDetail extends AppCompatActivity {
             public void onClick(View v) {
                 Bundle b = new Bundle();
                 Intent i = new Intent(getApplicationContext(), EditRecipe.class);
+                b.putString("recipeid",id);
                 b.putString("name", txtrecipename.getText().toString());
                 b.putString("deskripsi", txtrecipedescription.getText().toString());
                 b.putString("cara", txtrecipesteps.getText().toString());

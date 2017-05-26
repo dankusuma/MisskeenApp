@@ -41,6 +41,14 @@ public class Recipe {
         this.name = name;
         this.description = description;
     }
+    public Recipe(String id,String name, String description,String procedure, String portion)
+    {
+        this.id=id;
+        this.name = name;
+        this.procedure=procedure;
+        this.portion=portion;
+        this.description = description;
+    }
     public String getDescription() {
         return description;
     }

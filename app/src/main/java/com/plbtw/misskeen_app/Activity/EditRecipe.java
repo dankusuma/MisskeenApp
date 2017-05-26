@@ -15,10 +15,9 @@ import android.widget.Spinner;
 
 import com.plbtw.misskeen_app.Client;
 import com.plbtw.misskeen_app.Model.Recipe;
-import com.plbtw.misskeen_app.Model.User;
 import com.plbtw.misskeen_app.R;
 import com.plbtw.misskeen_app.Rest;
-import com.scalified.fab.ActionButton;
+import com.plbtw.misskeen_app.Varconstant;
 
 import java.util.ArrayList;
 
@@ -45,8 +44,7 @@ public class EditRecipe extends AppCompatActivity {
     private ArrayList<String> ingredientList=new ArrayList<>();
     private ArrayAdapter<String> adapter;
     private  Bundle extras;
-    private String nama, deskripsi, pembuatan, bahan;
-
+    private String recipeid;
     private String apikey = "nN2BVe0vO6t42PO3xCqywJNF2jWZ59";
 
     @Override
@@ -69,6 +67,7 @@ public class EditRecipe extends AppCompatActivity {
 
         extras = new Bundle();
         extras = getIntent().getExtras();
+        recipeid=extras.getString("recipeid");
         namaR.setText(extras.getString("name"));
         deskripsiR.setText(extras.getString("deskripsi"));
         caraR.setText(extras.getString("cara"));
@@ -83,9 +82,9 @@ public class EditRecipe extends AppCompatActivity {
 
     public void simpan()
     {
-        Recipe recipe = new Recipe(namaR.getText().toString(), deskripsiR.getText().toString());
+        Recipe recipe = new Recipe(recipeid,namaR.getText().toString(), deskripsiR.getText().toString(), caraR.getText().toString(), porsiR.getText().toString());
         Rest rest = Client.getClient().create(Rest.class);
-        Call<Recipe> call = rest.editRecipe(recipe, apikey);
+        Call<Recipe> call = rest.editRecipe(recipe, Varconstant.APIKEY);
         call.enqueue(new Callback<Recipe>() {
             @Override
             public void onResponse(Call<Recipe> call, Response<Recipe> response) {

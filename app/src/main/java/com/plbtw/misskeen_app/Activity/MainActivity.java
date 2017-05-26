@@ -62,13 +62,15 @@ public class MainActivity extends AppCompatActivity {
         navHeader = navigationView.getHeaderView(0);
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
+
         setUpNavigationView();
 
         if (savedInstanceState == null) {
-            navItemIndex = 0;
+            navItemIndex = 2;
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
+
 
     }
 
