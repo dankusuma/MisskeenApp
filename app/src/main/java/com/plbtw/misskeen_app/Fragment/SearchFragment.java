@@ -47,7 +47,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
     private List<Spinner> mSpiner = new ArrayList<>();
     private List<IngredientObject> listid = new ArrayList<>();
     ArrayList<Integer> temp = new ArrayList<>();
-    private ActionButton fab;
+
     public SearchFragment()
     {}
     public List<IngredientObject> mObject=new ArrayList<>();
@@ -61,8 +61,8 @@ public class SearchFragment extends android.support.v4.app.Fragment {
         btnPlus = (Button) getView().findViewById(R.id.btnaddIngredient);
         btnSearch=(Button)getView().findViewById(R.id.btnsearch);
         dynamicLayout = (LinearLayout) getView().findViewById(R.id.dynamicLayout);
-        fab = (ActionButton) getView().findViewById(R.id.action_button);
-        getData();
+
+
         btnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,13 +87,9 @@ public class SearchFragment extends android.support.v4.app.Fragment {
                 getDataResep();
             }
         });
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), CreateRecipe.class);
-                startActivity(i);
-            }
-        });
+
+
+        getData();
     }
     public int findID(String mItem)
     {
@@ -158,7 +154,7 @@ public class SearchFragment extends android.support.v4.app.Fragment {
                 String json = gson.toJson(recipeDetailList);
                 prefsEditor.putString("recipelist", json);
                 prefsEditor.commit();
-               Intent intent = new Intent(getContext(),ActivityListSearch.class);
+                Intent intent = new Intent(getContext(),ActivityListSearch.class);
                 startActivity(intent);
 
 

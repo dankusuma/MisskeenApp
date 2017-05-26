@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import com.plbtw.misskeen_app.R;
 import com.plbtw.misskeen_app.RecipeDetails;
 import com.plbtw.misskeen_app.RecipeListAdapter;
+import com.scalified.fab.ActionButton;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class ActivityListSearch extends AppCompatActivity {
     List<RecipeDetails> recipes;
     private ListView listView;
     private RecipeListAdapter adapter;
+    private ActionButton fab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,14 @@ public class ActivityListSearch extends AppCompatActivity {
                 Intent in = new Intent(ActivityListSearch.this, com.plbtw.misskeen_app.Activity.RecipeDetail.class);
                 in.putExtra("recipeid",recipeid);
                 startActivity(in);
+            }
+        });
+        fab = (ActionButton) findViewById(R.id.action_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ActivityListSearch.this, CreateRecipe.class);
+                startActivity(i);
             }
         });
     }
