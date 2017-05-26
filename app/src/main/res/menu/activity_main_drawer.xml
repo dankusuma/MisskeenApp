@@ -4,16 +4,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_18dp"
             android:title="@string/nav_home" />
         <item
             android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_account_box_black_18dp"
             android:title="@string/nav_profile" />
         <item
             android:id="@+id/nav_recipe"
+            android:icon="@drawable/ic_receipt_black_18dp"
             android:title="@string/nav_recipe" />
 
         <item
             android:id="@+id/nav_bookmark"
+            android:icon="@drawable/ic_book_black_18dp"
             android:title="@string/nav_bookmark" />
         <item
             android:id="@+id/nav_search"
@@ -28,6 +32,10 @@
             <item
                 android:id="@+id/nav_privacy_policy"
                 android:title="@string/privacy_policy" />
+            <item
+                android:id="@+id/nav_privacy_logout"
+                android:icon="@drawable/ic_exit_to_app_black_18dp"
+                android:title="logout" />
         </menu>
     </item>
 

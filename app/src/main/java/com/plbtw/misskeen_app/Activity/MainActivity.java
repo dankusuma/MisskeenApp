@@ -174,7 +174,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_privacy_policy:
                         startActivity(new Intent(MainActivity.this, PrivacyPolicyActivity.class));
                         drawer.closeDrawers();
-                        return true;
+                    case R.id.nav_privacy_logout:
+                        SharedPreferences ListRecipeSharedPrefs = PreferenceManager
+                                .getDefaultSharedPreferences(MainActivity.this);
+                        SharedPreferences.Editor prefsEditor =  ListRecipeSharedPrefs.edit();
+                        prefsEditor.clear();
+                        prefsEditor.commit();
+                        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                        startActivity(intent);
                     default:
                         navItemIndex = 0;
                 }
@@ -232,9 +239,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        if (navItemIndex == 0) {
-            getMenuInflater().inflate(R.menu.main, menu);
-        }
+
 
         if (navItemIndex == 4) {
             getMenuInflater().inflate(R.menu.notifications, menu);
@@ -246,17 +251,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_logout) {
 
-            SharedPreferences ListRecipeSharedPrefs = PreferenceManager
-                    .getDefaultSharedPreferences(MainActivity.this);
-            SharedPreferences.Editor prefsEditor =  ListRecipeSharedPrefs.edit();
-            prefsEditor.clear();
-            prefsEditor.commit();
-            Intent intent = new Intent(MainActivity.this,LoginActivity.class);
-            startActivity(intent);
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

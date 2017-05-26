@@ -3,6 +3,7 @@ package com.plbtw.misskeen_app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.plbtw.misskeen_app.Activity.LoginActivity;
 import com.plbtw.misskeen_app.Model.UserObject;
 import com.plbtw.misskeen_app.R;
 
@@ -41,8 +43,10 @@ public class ProfileFragment extends Fragment {
         return view;
     }
     private void getDataProfile() {
-        UserObject userObject = new UserObject();
-        userObject = getSavedObjectFromPreference(getContext(), "mPreference", "mObjectKey", UserObject.class);
+        SharedPreferences appSharedPrefs = PreferenceManager.getDefaultSharedPreferences(getContext());
+        Gson gson = new Gson();
+        String json = appSharedPrefs.getString("userdata", "");
+        UserObject userObject = gson.fromJson(json, UserObject.class);
         txtprofilename.setText(userObject.getFullname());
         txtprofilemail.setText(userObject.getEmail());
         txtprofiletelp.setText(userObject.getTelp());

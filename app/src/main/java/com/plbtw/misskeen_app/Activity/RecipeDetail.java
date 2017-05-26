@@ -146,10 +146,11 @@ public class RecipeDetail extends AppCompatActivity {
                         txtrecipename.setText(recipeDetail.getRecipename());
                         txtrecipedescription.setText(recipeDetail.getRecipedescription());
                         txtrecipesteps.setText(obj.getString("procedure"));
-
+                        String bahan;
                         for (int i=0;i<ingredients.length();i++)
                         {
-                            txtrecipeingredients.setText(txtrecipeingredients.getText()+ingredients.getJSONObject(i).getString("name")+"\n");
+                            txtrecipeingredients.append(ingredients.getJSONObject(i).getString("name")+"\n");
+
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

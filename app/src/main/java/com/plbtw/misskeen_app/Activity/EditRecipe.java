@@ -59,9 +59,9 @@ public class EditRecipe extends AppCompatActivity {
         bahanR = (Spinner) findViewById(R.id.etIngredient);
         caraR = (EditText) findViewById(R.id.etCooking);
         porsiR = (EditText) findViewById(R.id.etPortion);
-        jumlahB = (EditText) findViewById(R.id.etAmount);
+/*        jumlahB = (EditText) findViewById(R.id.etAmount);
         satuanB = (EditText) findViewById(R.id.etSatuan);
-        deskripsiB = (EditText) findViewById(R.id.etDeskripsiB);
+        deskripsiB = (EditText) findViewById(R.id.etDeskripsiB);*/
 
 //        btnBahan = (Button) findViewById(R.id.btnaddIngredient);
         btnSimpan = (Button) findViewById(R.id.btnSubmit);
