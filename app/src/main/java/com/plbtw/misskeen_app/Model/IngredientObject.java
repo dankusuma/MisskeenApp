@@ -7,10 +7,10 @@ import com.google.gson.annotations.SerializedName;
  */
 public class IngredientObject
 {
-    @SerializedName("ingredient_id")
-    private int id_ingredient;
     @SerializedName("id")
     private int id;
+    @SerializedName("ingredient_id")
+    private int id_ingredient;
     @SerializedName("name")
     private String nama;
     @SerializedName("amount")
@@ -25,23 +25,26 @@ public class IngredientObject
     }
     public IngredientObject(int id,String name)
     {
-        this.id_ingredient=id;
-        this.nama=name;
+        this.setId(id);
+        this.setId_ingredient(id);
+        this.setNama(name);
     }
+
     public IngredientObject(int id,String name, String amount, String unit, String description)
     {
-        this.id = id;
-        this.nama = name;
-        this.amount = amount;
-        this.unit = unit;
-        this.description = description;
+        this.setId(id);
+        this.setNama(name);
+        this.setAmount(amount);
+        this.setUnit(unit);
+        this.setDescription(description);
     }
     public IngredientObject(int id, String amount, String unit, String description)
     {
-        this.id_ingredient = id;
-        this.amount = amount;
-        this.unit = unit;
-        this.description = description;
+        this.setId(id);
+        this.setId_ingredient(id);
+        this.setAmount(amount);
+        this.setUnit(unit);
+        this.setDescription(description);
     }
 
     public void setId(int id) {
@@ -66,5 +69,29 @@ public class IngredientObject
 
     public String getUnit() {
         return unit;
+    }
+
+    public int getId_ingredient() {
+        return id_ingredient;
+    }
+
+    public void setId_ingredient(int id_ingredient) {
+        this.id_ingredient = id_ingredient;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.plbtw.misskeen_app.Client;
 import com.plbtw.misskeen_app.Model.IngredientObject;
@@ -168,13 +169,10 @@ public class CreateRecipe extends AppCompatActivity {
                 Log.wtf("Response size", response.body().size() + "");
                 for (int i = 0; i < response.body().size(); i++) {
                     ingredientList.add(response.body().get(i).getNama());
-                }
-                for(int i=0;i<response.body().size();i++)
-                {
-                    int id = i+1;
-                    IngredientObject object = new IngredientObject(id,ingredientList.get(i));
+                    IngredientObject object = new IngredientObject(response.body().get(i).getId(),response.body().get(i).getNama());
                     mObject.add(object);
                 }
+
 
 
                 adapter = new ArrayAdapter<String>(CreateRecipe.this, android.R.layout.simple_spinner_dropdown_item, ingredientList);
@@ -202,26 +200,20 @@ public class CreateRecipe extends AppCompatActivity {
         return id;
     }
 
-    public void buttonSimpan(View v)
-    {
-        for(Spinner s:mSpiner)
-        {
-            int id=findID(s.getSelectedItem().toString());
-            Log.wtf("id from spinner",id+"");
+    public void buttonSimpan(View v) {
+        for (Spinner s : mSpiner) {
+            int id = findID(s.getSelectedItem().toString());
             temp.add(id);
         }
-        for(EditText edjml:mEdjml)
-        {
+        for (EditText edjml : mEdjml) {
             String textjml = edjml.getText().toString();
             tempjml.add(textjml);
         }
-        for(EditText edsat:mEdsat)
-        {
+        for (EditText edsat : mEdsat) {
             String textsat = edsat.getText().toString();
             tempsat.add(textsat);
         }
-        for(EditText eddes:mEddes)
-        {
+        for (EditText eddes : mEddes) {
             String textdes = eddes.getText().toString();
             tempdes.add(textdes);
         }
@@ -234,22 +226,32 @@ public class CreateRecipe extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Rest rest = Client.getClient().create(Rest.class);
                 /*Ingredients ig = new Ingredients();
-                ig.setIngredientObject(temp)*/;
-                for (int i=0;i<mSpiner.size();i++)
-                {
+                ig.setIngredientObject(temp)*/
+                ;
+                for (int i = 0; i < mSpiner.size(); i++) {
+
                     int id = temp.get(i);
                     String jml = tempjml.get(i);
                     String sat = tempsat.get(i);
                     String des = tempdes.get(i);
                     //String nama = tempnama.get(i);
-                    IngredientObject object = new IngredientObject(id,jml,sat,des);
+                    IngredientObject object = new IngredientObject();
+                    object.setId(id);
+                    object.setId_ingredient(id);
+                    object.setAmount(jml);
+                    object.setUnit(sat);
+                    object.setDescription(des);
                     tempObject.add(object);
+                }
+                for(IngredientObject ig:tempObject)
+                {
+                    Toast.makeText(CreateRecipe.this,String.valueOf(ig.getId()), Toast.LENGTH_LONG).show();
                 }
 
                 //Recipe recipe = new Recipe("Nasi Goreng", "Nasi goreng kecap, mudah, cepat, enak", "1. Panaskan minyak 2. Masukkan nasi putih 3. Tambahkan kecap dan daging ayam", "1", mObject , null);
 
-                Recipe recipe = new Recipe(namaR.getText().toString(), deskripsiR.getText().toString(), caraR.getText().toString(), porsiR.getText().toString(),tempObject, "");
-                Call<Recipe> call = rest.createRecipe(recipe,Varconstant.APIKEY);
+                Recipe recipe = new Recipe(namaR.getText().toString(), deskripsiR.getText().toString(), caraR.getText().toString(), porsiR.getText().toString(), tempObject, "");
+                Call<Recipe> call = rest.createRecipe(recipe, Varconstant.APIKEY);
                 call.enqueue(new Callback<Recipe>() {
                     @Override
                     public void onResponse(Call<Recipe> call, Response<Recipe> response) {
@@ -283,6 +285,7 @@ public class CreateRecipe extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-
     }
+
 }
+
