@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.plbtw.misskeen_app.Client;
 import com.plbtw.misskeen_app.Model.IngredientObject;
@@ -53,6 +54,11 @@ public class EditRecipe extends AppCompatActivity {
     private List<EditText> mEdjml = new ArrayList<>();
     private List<EditText> mEdsat = new ArrayList<>();
     private List<EditText> mEddes = new ArrayList<>();
+    ArrayList<String> tempjml = new ArrayList<>();
+    ArrayList<String> tempsat = new ArrayList<>();
+    ArrayList<String> tempdes = new ArrayList<>();
+    ArrayList<Integer> temp = new ArrayList<>();
+    public List<IngredientObject> tempObject=new ArrayList<>();
     public List<IngredientObject> mObject=new ArrayList<>();
     private ArrayAdapter<String> adapter;
     private  Bundle extras;
@@ -85,6 +91,7 @@ public class EditRecipe extends AppCompatActivity {
         recipeid=extras.getString("recipeid");
         namaR.setText(extras.getString("name"));
         deskripsiR.setText(extras.getString("deskripsi"));
+       porsiR.setText(extras.getString("portion"));
         caraR.setText(extras.getString("cara"));
 //        bahanR.setextras.getString("bahan");
         btnSimpan.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +194,42 @@ public class EditRecipe extends AppCompatActivity {
 
     public void simpan()
     {
-        Recipe recipe = new Recipe(recipeid,namaR.getText().toString(), deskripsiR.getText().toString(), caraR.getText().toString(), porsiR.getText().toString());
+
+        Toast.makeText(EditRecipe.this,recipeid, Toast.LENGTH_LONG).show();
+        for (Spinner s : mSpiner) {
+            int id = findID(s.getSelectedItem().toString());
+            temp.add(id);
+
+        }
+        for (EditText edjml : mEdjml) {
+            String textjml = edjml.getText().toString();
+            tempjml.add(textjml);
+        }
+        for (EditText edsat : mEdsat) {
+            String textsat = edsat.getText().toString();
+            tempsat.add(textsat);
+        }
+        for (EditText eddes : mEddes) {
+            String textdes = eddes.getText().toString();
+            tempdes.add(textdes);
+        }
+        for (int i = 0; i < mSpiner.size(); i++) {
+
+            int id = temp.get(i);
+            String jml = tempjml.get(i);
+            String sat = tempsat.get(i);
+            String des = tempdes.get(i);
+
+            //String nama = tempnama.get(i);
+            IngredientObject object = new IngredientObject();
+            object.setId(id);
+            object.setId_ingredient(id);
+            object.setAmount(jml);
+            object.setUnit(sat);
+            object.setDescription(des);
+            tempObject.add(object);
+        }
+        Recipe recipe = new Recipe(recipeid,namaR.getText().toString(), deskripsiR.getText().toString(), caraR.getText().toString(), porsiR.getText().toString(), tempObject, "");
         Rest rest = Client.getClient().create(Rest.class);
         Call<Recipe> call = rest.editRecipe(recipe, Varconstant.APIKEY);
         call.enqueue(new Callback<Recipe>() {
@@ -212,5 +254,15 @@ public class EditRecipe extends AppCompatActivity {
                 Log.d("Error Edit Resep : ", t.toString());
             }
         });
+    }
+    public int findID(String mItem)
+    {
+        int id=0;
+        for (IngredientObject i: mObject)
+        {
+            if(i.getNama().equalsIgnoreCase(mItem))
+                id=i.getId();
+        }
+        return id;
     }
 }

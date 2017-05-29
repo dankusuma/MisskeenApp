@@ -36,6 +36,16 @@ public class Recipe {
         this.ingredients = ingredients;
         this.image = image;
     }
+    public Recipe(String id,String name, String description, String procedure, String portion,List<IngredientObject> ingredients, String Image)
+    {
+        this.name = name;
+        this.description = description;
+        this.procedure = procedure;
+        this.portion = portion;
+        this.ingredients = ingredients;
+        this.id=id;
+        this.image = image;
+    }
     public Recipe(String name, String description)
     {
         this.name = name;

@@ -81,6 +81,7 @@ public class RecipeDetail extends AppCompatActivity {
                 b.putString("deskripsi", txtrecipedescription.getText().toString());
                 b.putString("cara", txtrecipesteps.getText().toString());
                 b.putString("bahan", txtrecipeingredients.getText().toString());
+                b.putString("portion", txtrecipesportion.getText().toString());
                 b.putStringArrayList("listbahan", (ArrayList<String>) listbahan);
                 b.putStringArrayList("listsatuan", (ArrayList<String>) listsatuan);
                 b.putStringArrayList("listjumlah", (ArrayList<String>) listjumlah);
