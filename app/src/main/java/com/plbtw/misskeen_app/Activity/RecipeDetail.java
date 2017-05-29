@@ -31,6 +31,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,6 +44,10 @@ public class RecipeDetail extends AppCompatActivity {
     private TextView txtrecipename,txtrecipedescription,txtrecipesteps,txtrecipeingredients,txtrecipescalories,txtrecipesprice,txtrecipesportion;
     Bundle extras;
     String id;
+    private ArrayList<String>listbahan=new ArrayList<String>();
+    private ArrayList<String>listjumlah=new ArrayList<>();
+    private ArrayList<String>listsatuan=new ArrayList<>();
+    private ArrayList<String>listdeskripsi=new ArrayList<String>();
     private com.github.clans.fab.FloatingActionButton fab, fabdel;
 
     private String apikey = "nN2BVe0vO6t42PO3xCqywJNF2jWZ59";
@@ -76,6 +81,10 @@ public class RecipeDetail extends AppCompatActivity {
                 b.putString("deskripsi", txtrecipedescription.getText().toString());
                 b.putString("cara", txtrecipesteps.getText().toString());
                 b.putString("bahan", txtrecipeingredients.getText().toString());
+                b.putStringArrayList("listbahan", (ArrayList<String>) listbahan);
+                b.putStringArrayList("listsatuan", (ArrayList<String>) listsatuan);
+                b.putStringArrayList("listjumlah", (ArrayList<String>) listjumlah);
+                b.putStringArrayList("listdeskripsi", (ArrayList<String>) listdeskripsi);
                 i.putExtras(b);
                 startActivity(i);
             }
@@ -161,6 +170,11 @@ public class RecipeDetail extends AppCompatActivity {
                         for (int i=0;i<ingredients.length();i++)
                         {
                             txtrecipeingredients.append(ingredients.getJSONObject(i).getString("name")+"\n");
+
+                            listbahan.add(ingredients.getJSONObject(i).getString("name"));
+                            listjumlah.add(ingredients.getJSONObject(i).getJSONObject("ingredient_data").getString("amount"));
+                            listsatuan.add(ingredients.getJSONObject(i).getJSONObject("ingredient_data").getString("unit"));
+                            listdeskripsi.add(ingredients.getJSONObject(i).getJSONObject("ingredient_data").getString("description"));
 
                         }
                     } catch (JSONException e) {

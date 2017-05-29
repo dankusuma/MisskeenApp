@@ -118,7 +118,7 @@ public class CreateRecipe extends AppCompatActivity {
                 buttonSimpan(v);
             }
         });
-        getData();
+
 
         imageview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +146,8 @@ public class CreateRecipe extends AppCompatActivity {
                 bitmap = MediaStore.Images.Media.getBitmap(CreateRecipe.this.getContentResolver(), filePath);
                 //Setting the Bitmap to ImageView
                 imageview.setImageBitmap(bitmap);
+
+
                 //uploadImage();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -234,6 +236,7 @@ public class CreateRecipe extends AppCompatActivity {
                     String jml = tempjml.get(i);
                     String sat = tempsat.get(i);
                     String des = tempdes.get(i);
+                    String imagename=imageview.getTag().toString();
                     //String nama = tempnama.get(i);
                     IngredientObject object = new IngredientObject();
                     object.setId(id);
