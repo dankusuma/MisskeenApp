@@ -233,7 +233,6 @@ public class CreateRecipe extends AppCompatActivity {
                     String jml = tempjml.get(i);
                     String sat = tempsat.get(i);
                     String des = tempdes.get(i);
-                    String imagename=imageview.getTag().toString();
                     //String nama = tempnama.get(i);
                     IngredientObject object = new IngredientObject();
                     object.setId(id);
