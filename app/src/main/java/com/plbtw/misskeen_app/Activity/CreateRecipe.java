@@ -88,7 +88,7 @@ public class CreateRecipe extends AppCompatActivity {
         btnSimpan = (Button) findViewById(R.id.btnSubmit);
         btnTambahGambar = (ImageView) findViewById(R.id.ivAdd);
         btnTambahGambar.setVisibility(View.GONE);
-
+        getData();
         btnBahan.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -174,9 +174,6 @@ public class CreateRecipe extends AppCompatActivity {
                     IngredientObject object = new IngredientObject(response.body().get(i).getId(),response.body().get(i).getNama());
                     mObject.add(object);
                 }
-
-
-
                 adapter = new ArrayAdapter<String>(CreateRecipe.this, android.R.layout.simple_spinner_dropdown_item, ingredientList);
 
             }
